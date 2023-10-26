@@ -8,19 +8,13 @@
 #include <vector>
 #include <stdexcept>
 
-struct TemperatureInfo {
-    double temperature;
-    std::string date;
-    std::string time;
-};
-
 class WeatherDataAnalysis {
 public:
     WeatherDataAnalysis(const std::string& cleaneddata_Lund);
 
     void readWeatherData();
 
-    double calculateAverageSpringTemperature(const WeatherDataAnalysis& weatherAnalysis) const;
+    double calculateAverageSeasonTemperature(int startMonth, int endMonth, int year);
 
     const std::vector<int>& getYears() const {
         return years;
@@ -49,4 +43,5 @@ private:
 };
 
 #endif /* WEATHER_DATA_Analysis_H */
+
 
