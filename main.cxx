@@ -17,33 +17,62 @@ int main(int argc, char* argv[]) {
     WeatherDataAnalysis weatherAnalysis(filename);
     weatherAnalysis.readWeatherData();
 
-    std::vector<std::tuple<std::string, int, double>> seasonAverages;
-
-    // Get the list of years from your data
-    std::vector<int> years = weatherAnalysis.getYears();
-
     // Calculate and store average temperatures for each season and each year
     const int startYear = 1780;
-    const int endYear = 2023;
+    const int endYear = 2022;
+
+    std::vector<std::tuple<int, double>> springData, summerData, autumnData, winterData;
 
     for (int year = startYear; year <= endYear; year++) {
-        seasonAverages.push_back(std::make_tuple("Spring", year, weatherAnalysis.calculateAverageSeasonTemperature(3, 5, year)));
-        seasonAverages.push_back(std::make_tuple("Summer", year, weatherAnalysis.calculateAverageSeasonTemperature(6, 8, year)));
-        seasonAverages.push_back(std::make_tuple("Autumn", year, weatherAnalysis.calculateAverageSeasonTemperature(9, 11, year)));
-        seasonAverages.push_back(std::make_tuple("Winter", year, weatherAnalysis.calculateAverageSeasonTemperature(12, 2, year)));
-
-        // Output season averages for each year
-        for (const auto& entry : seasonAverages) {
-            std::string season;
-            int year;
-            double averageTemp;
-            std::tie(season, year, averageTemp) = entry;
-
-            std::cout << "Season: " << season << ", Year: " << year
-                    << ", Average Temperature: " << averageTemp << " °C" << std::endl;
-        }
+        springData.push_back(std::make_tuple(year, weatherAnalysis.calculateAverageSeasonTemperature(3, 5, year)));
+        summerData.push_back(std::make_tuple(year, weatherAnalysis.calculateAverageSeasonTemperature(6, 8, year)));
+        autumnData.push_back(std::make_tuple(year, weatherAnalysis.calculateAverageSeasonTemperature(9, 11, year)));
+        winterData.push_back(std::make_tuple(year, weatherAnalysis.calculateAverageSeasonTemperature(12, 2, year)));
     }
-    // Create a histogram or perform further analysis as needed.
+
+    // Save the data to separate CSV files for each season
+    std::ofstream springFile("spring.csv");
+    std::ofstream summerFile("summer.csv");
+    std::ofstream autumnFile("autumn.csv");
+    std::ofstream winterFile("winter.csv");
+
+    if (!springFile.is_open() || !summerFile.is_open() || !autumnFile.is_open() || !winterFile.is_open()) {
+        std::cerr << "Failed to open one or more output files for writing." << std::endl;
+        return 1;
+    }
+
+    for (const auto& entry : springData) {
+        int year;
+        double averageTemp;
+        std::tie(year, averageTemp) = entry;
+        springFile << year << " " << averageTemp << std::endl;
+    }
+
+    for (const auto& entry : summerData) {
+        int year;
+        double averageTemp;
+        std::tie(year, averageTemp) = entry;
+        summerFile << year << " " << averageTemp << std::endl;
+    }
+
+    for (const auto& entry : autumnData) {
+        int year;
+        double averageTemp;
+        std::tie(year, averageTemp) = entry;
+        autumnFile << year << " " << averageTemp << std::endl;
+    }
+
+    for (const auto& entry : winterData) {
+        int year;
+        double averageTemp;
+        std::tie(year, averageTemp) = entry;
+        winterFile << year << " " << averageTemp << std::endl;
+    }
+
+    springFile.close();
+    summerFile.close();
+    autumnFile.close();
+    winterFile.close();
 
     return 0;
 }
