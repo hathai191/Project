@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     int result2 = processTemperatureData2();
     int result3 = processTemperatureData3();
     
-    (nat)
+    //Error check (nat)
     if (result1 != 0 || result2 != 0 || result3 != 0) {
         std::cerr << "Error processing temperature data." << std::endl;
         return 1;
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
     // Call the cleanup function from the cleanup_data.cxx (nat)
     cleanupDataFiles();
     
-    (nat)
+    //(nat)
     std::cout << "Data processing completed successfully." << std::endl;
 
     return 0;
