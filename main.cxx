@@ -9,8 +9,10 @@
 #include <tuple>
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <CSV filename for weather>" << " <CSV filename for daily temperature>" << std::endl;
+    // Make sure we have the correct amount of arguments, otherwise we throw an error and send a usage message
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] << " <CSV filename for weather>" << " <CSV filename for daily temperature>"
+                      " <year to use for daily temperature analysis>" << std::endl;
         return 1;
     }
 
@@ -18,7 +20,7 @@ int main(int argc, char* argv[]) {
     const std::string daily_temperature_file = argv[2];
 
     YearlyTempAnalysis yearlyTempAnalysis(daily_temperature_file);
-    const int year = 2021;
+    const int year = std::stoi(argv[3]);
     yearlyTempAnalysis.handle_csv(year);
 
     
