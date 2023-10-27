@@ -1,4 +1,6 @@
+
 #include "seasonal.h"
+#include "year_temp_anlys.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -6,16 +8,41 @@
 #include <vector>
 #include <string>
 #include <tuple>
+#include "temperature_data.h"
+#include "cleanup_data.h" // Include the cleanup function header
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <CSV filename>" << std::endl;
+    // Make sure we have the correct amount of arguments, otherwise we throw an error and send a usage message
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] << " <CSV filename for weather>" << " <CSV filename for daily temperature>"
+                      " <year to use for daily temperature analysis>" << std::endl;
         return 1;
     }
 
     const std::string filename = argv[1];
+    const std::string daily_temperature_file = argv[2];
+
+    YearlyTempAnalysis yearlyTempAnalysis(daily_temperature_file);
+    const int year = std::stoi(argv[3]);
+    yearlyTempAnalysis.handle_csv(year);
+
+
+
+    // Process temperature data (nat)
+    int result1 = processTemperatureData1();
+    int result2 = processTemperatureData2();
+    int result3 = processTemperatureData3();
+    
+    //Error check (nat)
+    if (result1 != 0 || result2 != 0 || result3 != 0) {
+        std::cerr << "Error processing temperature data." << std::endl;
+        return 1;
+    }
+
+    // Process weather data
     WeatherDataAnalysis weatherAnalysis(filename);
     weatherAnalysis.readWeatherData();
+
 
     // Calculate and store average temperatures for each season and each year
     const int startYear = 1780;
@@ -60,6 +87,7 @@ int main(int argc, char* argv[]) {
         double averageTemp;
         std::tie(year, averageTemp) = entry;
         autumnFile << year << " " << averageTemp << std::endl;
+
     }
 
     for (const auto& entry : winterData) {
@@ -69,11 +97,28 @@ int main(int argc, char* argv[]) {
         winterFile << year << " " << averageTemp << std::endl;
     }
 
+
+    for (const auto& entry : winterData) {
+        int year;
+        double averageTemp;
+        std::tie(year, averageTemp) = entry;
+        winterFile << year << " " << averageTemp << std::endl;
+    }
+
+
     springFile.close();
     summerFile.close();
     autumnFile.close();
     winterFile.close();
 
+
+    // Call the cleanup function from the cleanup_data.cxx (nat)
+    cleanupDataFiles();
+    
+    //(nat)
+    std::cout << "Data processing completed successfully." << std::endl;
+
+
+
     return 0;
 }
-
