@@ -6,21 +6,24 @@ INCLUDES := -I ./include
 CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES)
 LDFLAGS :=
 
+SRC_DIR := src
+BUILD_DIR := build
+
+SRCS := $(wildcard $(SRC_DIR)/*.cxx)
+OBJS := $(patsubst $(SRC_DIR)/%.cxx, $(BUILD_DIR)/%.o, $(SRCS))
+
 .PHONY: all clean
 
 all: main
 
-# If you add new source files in the src/ directory, remember to add the
-# corresponding object file as a dependency here so that Make knows that it
-# should build it and link to it
-#
-# Remove the Example object file when you are done looking at it, it doesn't
-# contribute to the executable!
-main: main.cxx src/seasonal.o src/year_temp_anlys.o
+OBJS += $(BUILD_DIR)/cleanup_data.o
+
+main: main.cxx $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-src/%.o: src/%.cxx
-	$(CXX) $(CXXFLAGS) $^ -c -o $@
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cxx
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
-	rm -v src/*.o main
+	rm -v $(BUILD_DIR)/*.o main
