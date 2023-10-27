@@ -1,5 +1,6 @@
 
 #include "seasonal.h"
+#include "year_temp_anlys.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -11,12 +12,20 @@
 #include "cleanup_data.h" // Include the cleanup function header
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <CSV filename>" << std::endl;
+    // Make sure we have the correct amount of arguments, otherwise we throw an error and send a usage message
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] << " <CSV filename for weather>" << " <CSV filename for daily temperature>"
+                      " <year to use for daily temperature analysis>" << std::endl;
         return 1;
     }
 
     const std::string filename = argv[1];
+    const std::string daily_temperature_file = argv[2];
+
+    YearlyTempAnalysis yearlyTempAnalysis(daily_temperature_file);
+    const int year = std::stoi(argv[3]);
+    yearlyTempAnalysis.handle_csv(year);
+
 
 
     // Process temperature data (nat)
