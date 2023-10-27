@@ -19,6 +19,10 @@ awk -F ';' '{print $1 ";" $2 ";" $3}' cleaned_Lund.csv > cleaneddata_Lund.csv
 ```
 And we ended up with the file 'cleaneddata_Lund.csv' which we use for analysis in C++.
 
+The file cleaneddata_Lulea.csv is the cleaned version of opendata.Lulea.csv
+
+It was made in a similar fashion as the file cleandata_Lund.csv, by using the bash commands sed, grep, awk and cut.
+
 # Remark on compiling 
 
 It is recommended to compile 'src/seasonal.cxx' and 'main.cxx' together by the command
@@ -31,7 +35,7 @@ and for the execution of the code use the command
 ```
 
 There is a makefile provided if you wish to use that.
-Simply run with
+Simply compile with
 ```
 make
 ```
@@ -42,7 +46,7 @@ make clean
 
 # Remark on ROOT
 
-Once inside an apptainer and inside root, the code can be compiled and executed using the command
+Once inside an apptainer and inside root, the code can be loaded and executed using the command
 ```
 .L seasonal.C
 .L year_temp_anlys.C

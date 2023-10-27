@@ -17,6 +17,24 @@
 
 2023-10-27 Nathaly Johansson <na3162jo-s@student.lu.se>
 
+
+25/10-2023 Simon Göransson <si3873go-s@student.lu.se>
+  * Processed and added cleaneddata_Lulea.csv
+
+26/10-2023 Simon Göransson <si3873go-s@student.lu.se>
+  * Begun work on year_temp_anlys.cxx
+  * Created year_temp_anlys.h
+  * Created a temporary makefile
+
+27/10-2023 Simon Göransson <si3873go-s@student.lu.se>
+  * Finished yaer_temp_anlys.cxx
+    - Now exports temperatures & standard deviation to a .csv file
+  * A root macro was created to rednder this data.
+  * Command line arguments were added over hardcoded values
+  * Added general commenting through my work
+
+
+
 ## [26/10/2023] 
 - [Added original data file 'opendata_Lund.csv' and cleaned data file 'cleaneddata_Lund.csv']
 - [Amanda cleaned, Ha uploaded]

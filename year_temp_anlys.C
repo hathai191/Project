@@ -23,18 +23,20 @@ void PlotTemperatureWithErrors(const std::vector<double>& temperatures, const st
     }
 
     auto gr = new TGraphErrors(n, x, y, ex, ey);
-    gr->SetTitle("");
+    gr->SetTitle("Temperature over year 2021");
     gr->SetMarkerColor(kRed);
     gr->SetMarkerStyle(8);
     gr->SetMarkerSize(0.7);
     gr->SetFillColor(kBlack);
     gr->SetLineColor(kRed);
+    gr->GetXaxis()->SetTitle("Day");
+    gr->GetYaxis()->SetTitle("Temperature (Celsius)");
     gr->Draw("AP2L");
 
     c1->SaveAs("yearly_plot.png");
 }
 
-int main() {
+int year_temp_anlys() {
     std::vector<double> temperatures;
     std::vector<double> standardDeviations;
 
