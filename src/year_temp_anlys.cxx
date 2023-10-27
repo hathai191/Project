@@ -6,6 +6,7 @@
 #include <chrono>
 #include <sstream>
 #include <ctime>
+#include <math.h>
 
 
 YearlyTempAnalysis::YearlyTempAnalysis(const std::string& cleaneddata_Lulea) : filename(cleaneddata_Lulea) {
@@ -26,7 +27,8 @@ void YearlyTempAnalysis::handle_csv() {
     }
 
 
-    std::string date, temp;
+    std::string date;
+    double temp;
     std::string data, line;
 
     while (std::getline(file, line)) {
@@ -38,7 +40,7 @@ void YearlyTempAnalysis::handle_csv() {
         }
 
         date = tokens[0];
-        temp = tokens[1];
+        temp = std::stod(tokens[1]);
 
         // read the date and temperature
         std::tm t = {};
@@ -53,4 +55,22 @@ void YearlyTempAnalysis::handle_csv() {
             days[t.tm_yday].push_back(temp);
         }
     }
+    for (auto & temperatures : days) {
+        std::cout << std::to_string(computeStandardDeviation(temperatures)) << std::endl;
+    }
+}
+
+double YearlyTempAnalysis::computeStandardDeviation(std::vector<double> data) {
+    
+    double sum = 0.0;
+    for (auto & temperature : data) {
+        sum += temperature;
+    }
+    double median = sum/data.size();
+
+    sum = 0;
+    for (auto & temperature : data) {
+        sum += (temperature - median) * (temperature - median);
+    }
+    return sqrt(sum / (data.size()-1));
 }

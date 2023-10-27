@@ -15,10 +15,11 @@ public:
     YearlyTempAnalysis(const std::string& cleaneddata_Lulea);
 
     void handle_csv();
+    double computeStandardDeviation(std::vector<double> data);
 
 private:
     std::string filename;
-    std::vector<std::string> days[365];
+    std::vector<double> days[365];
 };
 
 
