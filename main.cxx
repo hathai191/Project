@@ -9,7 +9,6 @@
 #include <tuple>
 #include "temperature_data.h"
 #include "cleanup_data.h" // Include the cleanup function header
-#include "weather.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -89,7 +88,6 @@ int main(int argc, char* argv[]) {
         winterFile << year << " " << averageTemp << std::endl;
     }
 
-    }
 
     for (const auto& entry : winterData) {
         int year;
