@@ -9,14 +9,15 @@
 #include <tuple>
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <CSV filename>" << std::endl;
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <CSV filename for weather>" << " <CSV filename for daily temperature>" << std::endl;
         return 1;
     }
 
     const std::string filename = argv[1];
+    const std::string daily_temperature_file = argv[2];
 
-    YearlyTempAnalysis yearlyTempAnalysis(filename);
+    YearlyTempAnalysis yearlyTempAnalysis(daily_temperature_file);
     const int year = 2021;
     yearlyTempAnalysis.handle_csv(year);
 
