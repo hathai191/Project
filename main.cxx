@@ -1,4 +1,5 @@
 #include "include/weather.h"
+#include "include/year_temp_anlys.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -14,6 +15,11 @@ int main(int argc, char* argv[]) {
     }
 
     const std::string filename = argv[1];
+
+    YearlyTempAnalysis yearlyTempAnalysis(filename);
+    yearlyTempAnalysis.handle_csv();
+
+    
     WeatherDataAnalysis weatherAnalysis(filename);
     weatherAnalysis.readWeatherData();
 
@@ -44,7 +50,7 @@ int main(int argc, char* argv[]) {
         }
     }
     // Create a histogram or perform further analysis as needed.
-
+    
     return 0;
 }
 
