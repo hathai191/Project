@@ -1,1 +1,19 @@
 **Keeping track of progress**
+
+2023-10-25 Nathaly Johansson <na3162jo-s@student.lu.se>
+
+  Added source file process_data1.cxx to src/ (sorting data) 
+  Added source files process_data2.cxx and process_data3.cxx to src/ (processing data) 
+
+  Added header file temperature_data.h to include/ 
+
+  Created my main.cxx file
+
+2023-10-26 Nathaly Johansson <na3162jo-s@student.lu.se>
+
+  Added source file combined_histogram.cxx to src/
+  Added header file combined_histogram.h to include/ 
+
+  Added function to create the combined histogram to main.cxx
+
+2023-10-27 Nathaly Johansson <na3162jo-s@student.lu.se>
