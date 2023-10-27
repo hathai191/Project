@@ -1,3 +1,5 @@
+
+#include "seasonal.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -17,6 +19,7 @@ int main(int argc, char* argv[]) {
 
     const std::string filename = argv[1];
 
+
     // Process temperature data (nat)
     int result1 = processTemperatureData1();
     int result2 = processTemperatureData2();
@@ -31,6 +34,7 @@ int main(int argc, char* argv[]) {
     // Process weather data
     WeatherDataAnalysis weatherAnalysis(filename);
     weatherAnalysis.readWeatherData();
+
 
     // Calculate and store average temperatures for each season and each year
     const int startYear = 1780;
@@ -75,6 +79,7 @@ int main(int argc, char* argv[]) {
         double averageTemp;
         std::tie(year, averageTemp) = entry;
         autumnFile << year << " " << averageTemp << std::endl;
+
     }
 
     for (const auto& entry : winterData) {
@@ -84,16 +89,29 @@ int main(int argc, char* argv[]) {
         winterFile << year << " " << averageTemp << std::endl;
     }
 
+    }
+
+    for (const auto& entry : winterData) {
+        int year;
+        double averageTemp;
+        std::tie(year, averageTemp) = entry;
+        winterFile << year << " " << averageTemp << std::endl;
+    }
+
+
     springFile.close();
     summerFile.close();
     autumnFile.close();
     winterFile.close();
+
 
     // Call the cleanup function from the cleanup_data.cxx (nat)
     cleanupDataFiles();
     
     //(nat)
     std::cout << "Data processing completed successfully." << std::endl;
+
+
 
     return 0;
 }
