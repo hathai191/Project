@@ -27,7 +27,17 @@ g++ -Wall -Wextra -Werror -o my_program main.cxx src/seasonal.cxx -I ./include
 ```
 and for the execution of the code use the command
 ```
-./my_program cleaneddata.csv
+./my_program <cleaneddata.csv> <cleandata2.csv> <year for daily weather plot>
+```
+
+There is a makefile provided if you wish to use that.
+Simply run with
+```
+make
+```
+and to clean use
+```
+make clean
 ```
 
 # Remark on ROOT
@@ -35,7 +45,9 @@ and for the execution of the code use the command
 Once inside an apptainer and inside root, the code can be compiled and executed using the command
 ```
 .L seasonal.C
+.L year_temp_anlys.C
 draw_seasonal_averages()
+year_temp_anlys()
 ```
 
 
