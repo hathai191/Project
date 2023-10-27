@@ -1,4 +1,4 @@
-#include "include/weather.h"
+#include "seasonal.h"
 #include "include/year_temp_anlys.h"
 #include <iostream>
 #include <fstream>
