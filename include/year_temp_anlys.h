@@ -14,11 +14,12 @@ class YearlyTempAnalysis {
 public:
     YearlyTempAnalysis(const std::string& cleaneddata_Lulea);
 
-    void handle_csv();
+    void handle_csv(const int year);
     double computeStandardDeviation(std::vector<double> data);
 
 private:
     std::string filename;
+    double temperature_data[365];
     std::vector<double> days[365];
 };
 

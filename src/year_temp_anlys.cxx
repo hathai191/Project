@@ -11,11 +11,9 @@
 
 YearlyTempAnalysis::YearlyTempAnalysis(const std::string& cleaneddata_Lulea) : filename(cleaneddata_Lulea) {
     // Constructor
-    std::ifstream file(filename);
-    // load CSV values into variables
 }
 
-void YearlyTempAnalysis::handle_csv() {
+void YearlyTempAnalysis::handle_csv(const int year) {
     // find year
 
     // transform date to number
@@ -45,6 +43,10 @@ void YearlyTempAnalysis::handle_csv() {
         // read the date and temperature
         std::tm t = {};
         strptime(date.c_str(), "%Y-%m-%d", &t);
+        if (t.tm_year == year-1900) {
+            temperature_data[t.tm_yday] = temp;
+        }
+
         if (t.tm_year % 4 == 0 && t.tm_yday > 58) {
             if (t.tm_yday == 59) {
 
@@ -55,8 +57,13 @@ void YearlyTempAnalysis::handle_csv() {
             days[t.tm_yday].push_back(temp);
         }
     }
+
+    std::ofstream output("temperature_analysis.csv");
+    int i = 0;
     for (auto & temperatures : days) {
-        std::cout << std::to_string(computeStandardDeviation(temperatures)) << std::endl;
+        
+        output << std::to_string(temperature_data[i]) << " " << std::to_string(computeStandardDeviation(temperatures)) << std::endl;
+        i+=1;
     }
 }
 
