@@ -24,8 +24,12 @@ void PlotTemperatureWithErrors(const std::vector<double>& temperatures, const st
 
     auto gr = new TGraphErrors(n, x, y, ex, ey);
     gr->SetTitle("");
-    gr->SetMarkerColor(3);
-    gr->Draw("AP");
+    gr->SetMarkerColor(kRed);
+    gr->SetMarkerStyle(8);
+    gr->SetMarkerSize(0.7);
+    gr->SetFillColor(kBlack);
+    gr->SetLineColor(kRed);
+    gr->Draw("AP2L");
 
     c1->SaveAs("yearly_plot.png");
 }

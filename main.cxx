@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     const std::string filename = argv[1];
 
     YearlyTempAnalysis yearlyTempAnalysis(filename);
-    const int year = 2022;
+    const int year = 2021;
     yearlyTempAnalysis.handle_csv(year);
 
     
