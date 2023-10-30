@@ -1,65 +1,62 @@
 
-2023-10-25 Nathaly Johansson <na3162jo-s@student.lu.se>
+2023-10-25 
 
-  Added source file process_data1.cxx to src/ (sorting data) 
-  Added source files process_data2.cxx and process_data3.cxx to src/ (processing data) 
+  Nathaly Johansson <na3162jo-s@student.lu.se>
 
-  Added header file temperature_data.h to include/ 
+      Added source file process_data1.cxx to src/ (sorting data) 
+      Added source files process_data2.cxx and process_data3.cxx to src/ (processing data) 
+      Added header file temperature_data.h to include/ 
+      Created my main.cxx file
 
-  Created my main.cxx file
+  Simon Göransson <si3873go-s@student.lu.se>
+  
+      Processed and added cleaneddata_Lulea.csv
 
-2023-10-26 Nathaly Johansson <na3162jo-s@student.lu.se>
+2023-10-26 
 
-  Added source file combined_histogram.cxx to src/
-  Added header file combined_histogram.h to include/ 
+  Nathaly Johansson <na3162jo-s@student.lu.se>
 
-  Added function to create the combined histogram to main.cxx
+      Added source file combined_histogram.cxx to src/
+      Added header file combined_histogram.h to include/ 
+      Added function to create the combined histogram to main.cxx
 
-2023-10-27 Nathaly Johansson <na3162jo-s@student.lu.se>
+  Simon Göransson <si3873go-s@student.lu.se>
 
+      Begun work on year_temp_anlys.cxx
+      Created year_temp_anlys.h
+      Created a temporary makefile
 
-25/10-2023 Simon Göransson <si3873go-s@student.lu.se>
-  * Processed and added cleaneddata_Lulea.csv
+  Amanda Aghai Vafaei & Thu Ha Thai 
 
-26/10-2023 Simon Göransson <si3873go-s@student.lu.se>
-  * Begun work on year_temp_anlys.cxx
-  * Created year_temp_anlys.h
-  * Created a temporary makefile
+      Added original data file 'opendata_Lund.csv' and cleaned data file 'cleaneddata_Lund.csv' [Amanda cleaned, Ha uploaded]
 
-27/10-2023 Simon Göransson <si3873go-s@student.lu.se>
-  * Finished yaer_temp_anlys.cxx
-    - Now exports temperatures & standard deviation to a .csv file
-  * A root macro was created to rednder this data.
-  * Command line arguments were added over hardcoded values
-  * Added general commenting through my work
+  Amanda Aghai Vafaei
 
+      Created empty file '.gitignore', '.clang-format', 'rootlogon.C'
+      Merge files
 
+  Thu Ha Thai 
 
-## [26/10/2023] 
-- [Added original data file 'opendata_Lund.csv' and cleaned data file 'cleaneddata_Lund.csv']
-- [Amanda cleaned, Ha uploaded]
+      Added 'include/weather.h', 'src/weather.cxx' and 'main.cxx' for analysis of seasonal average temperatures
+      Update 'include/weather.h', 'src/weather.cxx' and 'main.cxx'
 
-## [26/10/2023] 
-- [Created empty file '.gitignore', '.clang-format', 'rootlogon.C']
-- [Amanda]
+2023-10-27 
 
-## [26/10/2023] 
-- [Added 'include/weather.h', 'src/weather.cxx' and 'main.cxx' for analysis of seasonal average temperatures]
-- [Ha]
+  Nathaly Johansson <na3162jo-s@student.lu.se>
 
-## [26/10/2023] 
-- [Merge files]
-- [Amanda]
+      Added source file cleanup_data.cxx to src/
+      Added header file cleanup_data.h to include/ 
 
-## [26/10/2023] 
-- [Update 'include/weather.h', 'src/weather.cxx' and 'main.cxx']
-- [Ha]
+  Simon Göransson <si3873go-s@student.lu.se>
 
-## [27/10/2023] 
-- [Added root file 'graph.C' to graph seasonal temperatures]
-- [Ha]
+      Finished yaer_temp_anlys.cxx
+      Now exports temperatures & standard deviation to a .csv file
+      A root macro was created to rednder this data.
+      Command line arguments were added over hardcoded values
+      Added general commenting through my work
 
-## [27/10/2023] 
-- [Changed file name: 'weather.h' to 'seasonal.h', 'weather.cxx' to 'seasonal.cxx', 'graph.C' to 'seasonal.C' for easier seperation of header files]
-- [Ha]
+  Thu Ha Thai
+
+      Added root file 'graph.C' to graph seasonal temperatures
+      Changed file name: 'weather.h' to 'seasonal.h', 'weather.cxx' to 'seasonal.cxx', 'graph.C' to 'seasonal.C' for easier seperation of header files
 
