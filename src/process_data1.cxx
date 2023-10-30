@@ -7,7 +7,7 @@
 #include "temperature_data.h"
 
 int processTemperatureData1() {
-    std::ifstream input("~/git/Project/datasets/cleaneddata_Lund.csv");
+    std::ifstream input("cleaneddata_Lund.csv");
 
     std::vector<TemperatureData> data;
     std::map<int, TemperatureData> warmestDays;
