@@ -12,7 +12,6 @@
 #include "cleanup_data.h" // Include the cleanup function header
 
 int main(int argc, char* argv[]) {
-    // Make sure we have the correct amount of arguments, otherwise we throw an error and send a usage message
     if (argc != 4) {
         std::cerr << "Usage: " << argv[0] << " <CSV filename for weather>" << " <CSV filename for daily temperature>"
                       " <year to use for daily temperature analysis>" << std::endl;
@@ -39,12 +38,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Process weather data
+ 
     WeatherDataAnalysis weatherAnalysis(filename);
     weatherAnalysis.readWeatherData();
 
-
-    // Calculate and store average temperatures for each season and each year
+    
     const int startYear = 1780;
     const int endYear = 2022;
 
@@ -57,7 +55,7 @@ int main(int argc, char* argv[]) {
         winterData.push_back(std::make_tuple(year, weatherAnalysis.calculateAverageSeasonTemperature(12, 2, year)));
     }
 
-    // Save the data to separate CSV files for each season
+
     std::ofstream springFile("spring.csv");
     std::ofstream summerFile("summer.csv");
     std::ofstream autumnFile("autumn.csv");
