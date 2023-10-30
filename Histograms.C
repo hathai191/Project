@@ -3,8 +3,24 @@
 #include <TH1F.h>
 #include <TCanvas.h>
 #include <TLegend.h>
+#include <fstream>
+#include <TStyle.h>
+
+void setCustomStyle() {
+    gStyle->SetOptStat(0);
+    gStyle->SetOptTitle(0);
+    gStyle->SetTitleSize(0.05, "x");
+    gStyle->SetTitleSize(0.05, "y");
+    gStyle->SetLabelSize(0.05, "x");
+    gStyle->SetLabelSize(0.05, "y");
+    gStyle->SetPadTopMargin(0.05);
+    gStyle->SetPadRightMargin(0.05);
+    gStyle->SetPadBottomMargin(0.16);
+    gStyle->SetPadLeftMargin(0.16);
+}
 
 void histogram() {
+    setCustomStyle();
     // Create a canvas to display the combined histograms
     TCanvas *c1 = new TCanvas("c1", "Combined Histograms", 800, 600);
 
@@ -17,8 +33,8 @@ void histogram() {
     warmestDaysHist->SetFillColor(kRed);
 
     // Read data from the input files and fill the histograms
-    std::ifstream coldestDataFile("coldest_days.txt");
-    std::ifstream warmestDataFile("warmest_days.txt");
+    std::ifstream coldestDataFile("output.txt");
+    std::ifstream warmestDataFile("output2.txt");
     int value;
 
     while (coldestDataFile >> value) {
