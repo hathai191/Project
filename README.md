@@ -50,8 +50,10 @@ Once inside an apptainer and inside root, the code can be loaded and executed us
 ```
 .L seasonal.C
 .L year_temp_anlys.C
+.L Histograms.C
 draw_seasonal_averages()
 year_temp_anlys()
+histogram()
 ```
 
 
