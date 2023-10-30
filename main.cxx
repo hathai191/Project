@@ -87,16 +87,7 @@ int main(int argc, char* argv[]) {
         double averageTemp;
         std::tie(year, averageTemp) = entry;
         autumnFile << year << " " << averageTemp << std::endl;
-
     }
-
-    for (const auto& entry : winterData) {
-        int year;
-        double averageTemp;
-        std::tie(year, averageTemp) = entry;
-        winterFile << year << " " << averageTemp << std::endl;
-    }
-
 
     for (const auto& entry : winterData) {
         int year;
